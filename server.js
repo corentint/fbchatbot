@@ -9,18 +9,15 @@ app.listen((process.env.PORT || 3000));
 
 // Server frontpage
 app.get('/', function (req, res) { 
-    console.log("get first part"); 
-    res.send('942634981');
-    console.log("get second part"); 
+    res.send('This is TestBot Server');
 });
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {  
-    console.log("web hook");
-    console.log("verify toen : " + req.query['hub.verify_token']);
-    console.log("hub challenge : " + req.query['hub.challenge']);
-    if (req.query['hub.verify_token'] === 'testbot_verify_token') {
-        res.send(req.query['hub.challenge']);
+    let verify_token = req.query['hub.verify_token'];
+    let challenge = req.query['hub.challenge'];
+    if (verify_token === 'testbot_verify_token') {
+        res.send(challenge);
     } else {
         res.send('Invalid verify token');
     }
