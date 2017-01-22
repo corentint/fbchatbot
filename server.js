@@ -31,7 +31,9 @@ app.post('/webhook', function (req, res) {
         console.log(event.sender.id);
         if (event.message && event.message.text) {
             console.log("ID : " + event.sender.id);
-            sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+            sendParseMessage(event.message.text);
+
+            // sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
     }
     res.sendStatus(200);
@@ -56,3 +58,8 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+
+function sendParseMessage(message){
+    var parsedMessage = message.split(' ');
+    sendMessage(event.sender.id, {text: "Parsed message: " + parsedMessage});
+}
