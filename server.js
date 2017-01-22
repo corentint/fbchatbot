@@ -58,8 +58,3 @@ function sendMessage(recipientId, message) {
         }
     });
 };
-
-function sendParseMessage(message){
-    var parsedMessage = message.split(' ');
-    sendMessage(event.sender.id, {text: "Parsed message: " + parsedMessage});
-}
