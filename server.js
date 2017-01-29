@@ -31,7 +31,8 @@ app.post('/webhook', function (req, res) {
         console.log(event.sender.id);
         if (event.message && event.message.text) {
             console.log("ID : " + event.sender.id);
-            sendMessage(event.sender.id, {text: "Technical questions: " + event.message.text});
+            // sendMessage(event.sender.id, {text: "Choose a technical topic: " + event.message.text});
+            sendMessage(event.sender.id, getButtonMessage());
         }
     }
     res.sendStatus(200);
@@ -56,3 +57,27 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+
+function getButtonMessage() {
+    return {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to do next?",
+        "buttons":[
+          {
+            "type":"web_url",
+            "url":"https://petersapparel.parseapp.com",
+            "title":"Show Website"
+          },
+          {
+            "type":"postback",
+            "title":"Start Chatting",
+            "payload":"USER_DEFINED_PAYLOAD"
+          }
+        ]
+      }
+    }
+  }
+}
