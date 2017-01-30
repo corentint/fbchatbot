@@ -1,6 +1,7 @@
 var express = require('express');  
 var bodyParser = require('body-parser');  
 var request = require('request');  
+var buttons = require('./button');  
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));  
@@ -66,11 +67,7 @@ function getButtonMessage() {
         "template_type":"button",
         "text":"Which topic would you like to study ?",
         "buttons":[
-          {
-            "type":"web_url",
-            "title":"C#",
-            "payload": "TOPIC_CSHARP_SELECTED"
-          },
+          buttons.csharpButton,
           {
             "type":"postback",
             "title":"Typescript",
