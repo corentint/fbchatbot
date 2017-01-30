@@ -67,7 +67,11 @@ function getButtonMessage() {
         "template_type":"button",
         "text":"Which topic would you like to study ?",
         "buttons":[
-          buttons.csharpButton,
+          {
+            "type":"web_url",
+            "title":"C#",
+            "payload": "TOPIC_CSHARP_SELECTED"
+          },
           {
             "type":"postback",
             "title":"Typescript",
