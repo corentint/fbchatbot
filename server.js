@@ -32,8 +32,8 @@ app.post('/webhook', function (req, res) {
         console.log(event.sender.id);
         if (event.message && event.message.text) {
             console.log("ID : " + event.sender.id);
-            sendMessage(event.sender.id, {text: "Choose a technical topic: " + event.message.text});
-            // sendMessage(event.sender.id, getButtonMessage());
+            //sendMessage(event.sender.id, {text: "Choose a technical topic: " + event.message.text});
+            sendMessage(event.sender.id, getButtonMessage());
         }
     }
     res.sendStatus(200);
@@ -68,7 +68,7 @@ function getButtonMessage() {
         "text":"Which topic would you like to study ?",
         "buttons":[
           {
-            "type":"web_url",
+            "type":"postback",
             "title":"C#",
             "payload": "TOPIC_CSHARP_SELECTED"
           },
