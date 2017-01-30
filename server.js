@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         console.log(event.sender.id);
-        if (event.message.payload === 'TOPIC_CSHARP_SELECTED')
+        if (event.postback.payload === 'TOPIC_CSHARP_SELECTED')
         {
             sendMessage(event.sender.id, {text: "C# topic selected"});
         }
