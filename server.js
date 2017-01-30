@@ -64,17 +64,17 @@ function getButtonMessage() {
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"What do you want to do next?",
+        "text":"Which topic would you like to study ?",
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://petersapparel.parseapp.com",
-            "title":"Show Website"
+            "title":"C#",
+            "payload": "TOPIC_CSHARP_SELECTED"
           },
           {
             "type":"postback",
-            "title":"Start Chatting",
-            "payload":"USER_DEFINED_PAYLOAD"
+            "title":"Typescript",
+            "payload":"TOPIC_TYPESCRIPT_SELECTED"
           }
         ]
       }
