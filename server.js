@@ -36,14 +36,14 @@ app.post('/webhook', function (req, res) {
         {
             console.log("C# selected");
             sendMessage(event.sender.id, {text: "C# topic selected"});
-            sendMessage(event.sender.id, getButtonMessage());
-            // let firstcsharpQuestion = new questions(
-            //     "C#", 
-            //     "In C# can one class inherit from several classes ?",
-            //     ["yes", "no"],
-            //     "yes");
+            // sendMessage(event.sender.id, getButtonMessage());
+            let firstcsharpQuestion = new questions(
+                "C#", 
+                "In C# can one class inherit from several classes ?",
+                ["yes", "no"],
+                "yes");
 
-            // displayQuestion(firstcsharpQuestion);
+            displayQuestion(event.sender.id, firstcsharpQuestion);
         }
         else if (event.postback && event.postback.payload === 'TOPIC_TYPESCRIPT_SELECTED')
         {
@@ -94,7 +94,7 @@ function getButtonMessage() {
   }
 }
 
-function displayQuestion(questions) {
+function displayQuestion(senderId, questions) {
     let questionToSend = {
     "attachment":{
       "type":"template",
@@ -102,12 +102,20 @@ function displayQuestion(questions) {
         "template_type":"button",
         "text":"Welcome ! Which topic would you like to study again ?",
         "buttons":[
-          button.csharpButton,
-          button.typescriptButton
+          {
+            "type":"postback",
+            "title":"Yes",
+            "payload": "ANSWER_YES_SELECTED"
+          },
+          {
+            "type":"postback",
+            "title":"No",
+            "payload": "ANSWER_NO_SELECTED"
+          }
         ]
       }
     }
   }
 
-    sendMessage(event.sender.id, getButtonMessage());
+    sendMessage(senderId, questionToSend);
 }
