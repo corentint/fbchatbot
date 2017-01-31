@@ -31,12 +31,12 @@ app.post('/webhook', function (req, res) {
         var event = events[i];
         console.log("sender id : " + event.sender.id);
         console.log(JSON.stringify(event));
-        // if (event.postback.payload === 'TOPIC_CSHARP_SELECTED')
-        // {
-        //     sendMessage(event.sender.id, {text: "C# topic selected"});
-        // }
-
-        if (event.message && event.message.text) {
+        if (event.postback && event.postback.payload === 'TOPIC_CSHARP_SELECTED')
+        {
+            console.log("C# selected");
+            sendMessage(event.sender.id, {text: "C# topic selected"});
+        }
+        else if (event.message && event.message.text) {
             //sendMessage(event.sender.id, {text: "Choose a technical topic: " + event.message.text});
             sendMessage(event.sender.id, getButtonMessage());
         }
