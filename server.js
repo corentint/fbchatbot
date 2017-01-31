@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');  
 var request = require('request');  
 var buttons = require('./button');  
+var questions = require('./question');  
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));  
@@ -10,7 +11,7 @@ app.listen((process.env.PORT || 3000));
 
 // Server frontpage
 app.get('/', function (req, res) { 
-    res.send('This is TestBot Server 123');
+    res.send('Server frontpage');
 });
 
 // Facebook Webhook
