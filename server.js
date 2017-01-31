@@ -95,14 +95,16 @@ function getButtonMessage() {
 }
 
 function displayQuestion(senderId, question) {
+    let test = [];
+    test.push
     let possibleAnswers = question.possibleAnswers.forEach(function(possibleAnswer) {
-        return {
+        test.push({
             "type":"postback",
             "title":possibleAnswer,
             "payload": "ANSWER_YES_SELECTED"
-          }
+        });
     });
-    console.log(JSON.stringify(possibleAnswers));
+    console.log(JSON.stringify(test));
     let questionToSend = {
     "attachment":{
       "type":"template",
