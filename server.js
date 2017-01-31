@@ -36,6 +36,11 @@ app.post('/webhook', function (req, res) {
             console.log("C# selected");
             sendMessage(event.sender.id, {text: "C# topic selected"});
         }
+        else if (event.postback && event.postback.payload === 'TOPIC_TYPESCRIPT_SELECTED')
+        {
+            console.log("Typescript selected");
+            sendMessage(event.sender.id, {text: "Typescript topic selected"});
+        }
         else if (event.message && event.message.text) {
             //sendMessage(event.sender.id, {text: "Choose a technical topic: " + event.message.text});
             sendMessage(event.sender.id, getButtonMessage());
