@@ -94,13 +94,13 @@ function getButtonMessage() {
   }
 }
 
-function displayQuestion(senderId, questions) {
+function displayQuestion(senderId, question) {
     let questionToSend = {
     "attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Welcome ! Which topic would you like to study again ?",
+        "text": question.text,
         "buttons":[
           {
             "type":"postback",
