@@ -36,14 +36,14 @@ app.post('/webhook', function (req, res) {
         {
             console.log("C# selected");
             sendMessage(event.sender.id, {text: "C# topic selected"});
+            sendMessage(event.sender.id, getButtonMessage());
+            // let firstcsharpQuestion = new questions(
+            //     "C#", 
+            //     "In C# can one class inherit from several classes ?",
+            //     ["yes", "no"],
+            //     "yes");
 
-            let firstcsharpQuestion = new questions(
-                "C#", 
-                "In C# can one class inherit from several classes ?",
-                ["yes", "no"],
-                "yes");
-
-            displayQuestion(firstcsharpQuestion);
+            // displayQuestion(firstcsharpQuestion);
         }
         else if (event.postback && event.postback.payload === 'TOPIC_TYPESCRIPT_SELECTED')
         {
