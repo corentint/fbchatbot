@@ -1,6 +1,6 @@
 module.exports = function() {
     this.csharpButton = {
-            "type":"web_url",
+            "type":"postback",
             "title":"C#",
             "payload": "TOPIC_CSHARP_SELECTED"
           };
