@@ -42,6 +42,8 @@ app.post('/webhook', function (req, res) {
                 "In C# can one class inherit from several classes ?",
                 ["yes", "no"],
                 "yes");
+
+            displayQuestion(firstcsharpQuestion);
         }
         else if (event.postback && event.postback.payload === 'TOPIC_TYPESCRIPT_SELECTED')
         {
@@ -90,4 +92,22 @@ function getButtonMessage() {
       }
     }
   }
+}
+
+function displayQuestion(questions) {
+    let questionToSend = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Welcome ! Which topic would you like to study again ?",
+        "buttons":[
+          button.csharpButton,
+          button.typescriptButton
+        ]
+      }
+    }
+  }
+
+    sendMessage(event.sender.id, getButtonMessage());
 }
