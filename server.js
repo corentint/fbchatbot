@@ -78,11 +78,7 @@ function getButtonMessage() {
         "text":"Welcome ! Which topic would you like to study ?",
         "buttons":[
           button.csharpButton,
-          {
-            "type":"postback",
-            "title":"Typescript",
-            "payload":"TOPIC_TYPESCRIPT_SELECTED"
-          }
+          button.typescriptButton
         ]
       }
     }
