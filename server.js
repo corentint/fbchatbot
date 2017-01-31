@@ -69,6 +69,7 @@ function sendMessage(recipientId, message) {
 };
 
 function getButtonMessage() {
+    let button = new buttons();
     return {
     "attachment":{
       "type":"template",
@@ -76,7 +77,7 @@ function getButtonMessage() {
         "template_type":"button",
         "text":"Welcome ! Which topic would you like to study ?",
         "buttons":[
-          buttons.csharpButton,
+          button.csharpButton,
           {
             "type":"postback",
             "title":"Typescript",
